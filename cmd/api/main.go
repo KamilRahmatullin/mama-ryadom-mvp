@@ -3,15 +3,15 @@ package main
 import (
 	"log"
 
-	"github.com/kamilrahmatullin/mama-ryadom-mvp/internal/db"
+	"github.com/kamilrahmatullin/mama-ryadom-mvp/internal/app"
 )
 
 func main() {
-	database, err := db.NewSQLiteDB()
+	a, err := app.New()
 	if err != nil {
-		log.Fatal("failed to connect database:", err)
+		log.Fatal(err)
 	}
-	log.Println("database connected")
 
-	_ = database
+	log.Println("server started on :8080")
+	log.Fatal(a.Run(":8080"))
 }
