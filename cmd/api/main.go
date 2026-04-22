@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"github.com/kamilrahmatullin/mama-ryadom-mvp/internal/db"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	database, err := db.NewSQLiteDB()
+	if err != nil {
+		log.Fatal("failed to connect database:", err)
+	}
+	log.Println("database connected")
+
+	_ = database
 }
